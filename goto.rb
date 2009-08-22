@@ -1,3 +1,5 @@
+# a little experiment to implement goto in ruby
+
 def reset
   $iptr = 0
   $program = []
@@ -5,6 +7,8 @@ def reset
   $binding = binding
 end
 
+# bug: if this is evaluated during run,
+# we only get backward goto's
 def label(lname)
   $labels[lname] = $iptr
 end
@@ -36,9 +40,19 @@ def type
 end
 
 
+# irb(main):166:0> read
 # n = 0
 # label :st
 # puts n
 # n = n + 1
 # goto :st if n < 5
 # ~~~
+# => nil
+# irb(main):167:0> run
+# 0
+# 1
+# 2
+# 3
+# 4
+# => nil
+# irb(main):168:0>
