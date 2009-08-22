@@ -1,4 +1,24 @@
 # a little experiment to implement goto in ruby
+# use at your own risk of velociraptor attack.
+
+#usage:
+
+# irb(main):166:0> read
+# n = 0
+# label :st
+# puts n
+# n = n + 1
+# goto :st if n < 5
+# ~~~
+# => nil
+# irb(main):167:0> run
+# 0
+# 1
+# 2
+# 3
+# 4
+# => nil
+# irb(main):168:0>
 
 def reset
   $iptr = 0
@@ -38,21 +58,3 @@ def type
   $program.each{|line| puts line}
   puts "~~~"
 end
-
-
-# irb(main):166:0> read
-# n = 0
-# label :st
-# puts n
-# n = n + 1
-# goto :st if n < 5
-# ~~~
-# => nil
-# irb(main):167:0> run
-# 0
-# 1
-# 2
-# 3
-# 4
-# => nil
-# irb(main):168:0>
